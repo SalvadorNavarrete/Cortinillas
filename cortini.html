@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortinilla</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Contenedor de la imagen para hacerlo responsivo */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('camacho.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+        .box {
+            background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+            border: 2px solid white;
+            padding: 10px;
+            width: 250px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            position: absolute;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 50px;
+        }
+        #fecha {
+            bottom: 70px;
+            left: 20px;
+        }
+        #hora {
+            bottom: 20px;
+            left: 20px;
+        }
+        #esperando {
+            bottom: 40px;
+            right: 20px;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .blink {
+            animation: blink 1s infinite;
+        }
+        /* Estilos Responsivos */
+        @media (max-width: 600px) {
+            .box {
+                width: 200px;
+                font-size: 16px;
+                padding: 8px;
+            }
+            #fecha { bottom: 60px; } /* Ajuste menor en móviles */
+            #hora { bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div> <!-- Imagen de fondo responsiva -->
+
+    <div class="box" id="fecha">Cargando fecha...</div>
+    <div class="box" id="hora">7:00 a 10:00 hrs.</div>
+    <div class="box blink" id="esperando">Esperando...</div>
+
+    <script>
+        function actualizarFecha() {
+            const ahora = new Date();
+            const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            
+            const diaNombre = diasSemana[ahora.getDay()]; // Obtiene el nombre del día
+            const diaNumero = ahora.getDate(); // Obtiene el número del día
+            const mesNombre = meses[ahora.getMonth()]; // Obtiene el nombre del mes
+            
+            document.getElementById("fecha").textContent = `${diaNombre} ${diaNumero} de ${mesNombre}`;
+        }
+        actualizarFecha(); // Llamada inicial
+    </script>
+
+</body>
+</html>
