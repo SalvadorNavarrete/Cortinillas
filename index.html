@@ -88,17 +88,18 @@
 
     <script>
         function actualizarFecha() {
-            const ahora = new Date();
-            const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-            const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-            
-            const diaNombre = diasSemana[ahora.getDay()]; // Obtiene el nombre del día
-            const diaNumero = ahora.getDate(); // Obtiene el número del día
-            const mesNombre = meses[ahora.getMonth()]; // Obtiene el nombre del mes
-            
-            document.getElementById("fecha").textContent = `${diaNombre} ${diaNumero} de ${mesNombre}`;
-        }
-        actualizarFecha(); // Llamada inicial
+    const ahora = new Date();
+    const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+    
+    const diaNombre = diasSemana[ahora.getDay()]; // Obtiene el nombre del día
+    const diaNumero = ahora.getDate(); // Obtiene el número del día
+    const mesNombre = meses[ahora.getMonth()]; // Obtiene el nombre del mes
+    
+    document.getElementById("fecha").textContent = `${mesNombre} ${diaNumero}`;
+}
+actualizarFecha(); // Llamada inicial
+
     </script>
 
 </body>
